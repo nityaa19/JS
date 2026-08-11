@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>DOM learning</title>
+  <style>
+    .bg-black{
+      background-color: black;
+      color: white;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body class="bg-black">
+  <div >
+    <h1 id="title" class="heading">DOM learning on chai and code <span style="display: none;">test text</span></h1>
+    <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+
+    <ul>
+      <li>Item 1 </li><!--changing the color using querySelector-->
+      <li>Item 2 </li>
+    </ul>
+    
+  </div>
+</body>
+</html>
+
+<!--
+title = document.getElementById('title');
+
+title.textContent
+'DOM learning on chai and code'
+title.innerHTML
+'DOM learning on chai and code'
+title.innerText
+'DOM learning on chai and code'
+
+
+after adding span and hide it 
+
+title.innerText (only the visible content will be returned)
+'DOM learning on chai and code'
+title.textContent(total content will be returned)
+'DOM learning on chai and code test text'
+title.innerHTML
+'DOM learning on chai and code <span style="display: none;">test text</span>'
+
+## NodeList and htmlcollection are not array but we can convert them into array using Array.from() or spread operator [...NodeList]
+-->

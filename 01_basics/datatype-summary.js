@@ -1,7 +1,7 @@
 //data in JS are devided into 2 types 
 //JS is dynamicall Typed lang 
 
-// 1. primitive 22. non-primitive(or reference type )
+// 1. primitive 2. non-primitive(or reference type )
 
 //primitive : 7 categories => (String, Number, Bollean , null, undefined, Symbol, BigInt)
 
@@ -41,7 +41,7 @@ const myFun=function(){
 
 
 
-//++++++++++++++++++++++++++++++++++_____MEMORY_____++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++_____MEMORY______++++++++++++++++++++++++++++++++++++++++
 
 //stack memory(primitive) and heap memory(Non-primitive)
 //stack(primitive)

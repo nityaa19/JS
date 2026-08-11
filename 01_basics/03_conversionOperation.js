@@ -30,8 +30,8 @@ let booleanIsLoggedIn=Boolean(isLoggedIn)
 // "" => false;
 //"nitya" => true
 
-let someNumber =33
-let stringNumber=String(someNumber)
+// let someNumber =33
+// let stringNumber=String(someNumber)
 // console.log(stringNumber)
 // console.log( typeof stringNumber)
 
@@ -59,16 +59,16 @@ let negValue=-value
 // console.log(1 + "2")
 // console.log("1" + 2 + 2)
 
-// console.log(1 + 2 + "2")
+ console.log(typeof(1 + 2 + "9"))//ye string bn jyega kyoki no. + string string hoga
 //jo dataType phle aayega uske according operation perform hoga 
 
 
 // console.log(true)
 // console.log(+"")
 
-let gameCounter=100
-gameCounter++;
-console.log(gameCounter++)
+// let gameCounter=100
+// gameCounter++;
+// console.log(gameCounter++)
 
 
 

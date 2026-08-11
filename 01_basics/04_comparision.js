@@ -1,6 +1,6 @@
 // console.log(2>1)
 
-//console.log("2">1);
+// console.log("2">1); js convert kr deta h num m 
 
 // console.log(null>0)// F
 // console.log(null==0)// F
