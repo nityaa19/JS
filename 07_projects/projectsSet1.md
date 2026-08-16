@@ -167,13 +167,11 @@ function endGame(){
   newGame()
 }
 
-
-
-
 ```
 
 
 ##project 5
+
 ```
 javascript
 const insert= document.getElementById('insert')
@@ -194,7 +192,7 @@ window.addEventListener('keydown',function(e){
    </tr>
 </table>
     </div>
-  `
+  
 })
 
 ```
