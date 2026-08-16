@@ -31,7 +31,7 @@
 
     //type, timestamp, defaultPrevented
     //target, toElement, srcElement, currentTarget
-    //clientX, clientY, screenX, screenY
+    //clientX, clientY(ouse's vertical position relative to the viewport.), screenX(mouse's horizontal position), screenY(vertical)
     //altKey, ctrlkey, shiftkey, keyCode
 
     // document.querySelector('#images').addEventListener('click',function(e){
@@ -51,6 +51,13 @@
 
 
     document.querySelector('#images').addEventListener('click',function(e){
+        console.log(e.currentTarget);//parents html(where the listener is attached)
+        console.log(e.target)//html of the event clicked;(where the event happened)
+        // console.log(e.srcElement) -> same as target
+        
+        
+        
+        
         console.log(e.target.tagName);
         if(e.target.tagName==='IMG'){
             let removeIt=e.target.parentNode
