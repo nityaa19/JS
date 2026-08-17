@@ -14,11 +14,14 @@
     <button id="userDetail">Get User Detail</Details></button>
 </body>
 <script>
+  // v8 is one of the engine of JS use to run the JS 
+  //console.log() is not part of JS it is tha dev tool of a browser
   let data=null;
   const requestUrl='https://api.github.com/users/nityaa19'
   const xhr = new XMLHttpRequest();
   xhr.open('GET',requestUrl)
   xhr.onreadystatechange=function(){
+    //states are 2,3,4
     console.log(xhr.readyState)
 
     if(xhr.readyState===4){
