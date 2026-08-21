@@ -37,6 +37,7 @@ step 3: all the arguments are injected into this keyword
 step 4: return in the function 
 */
 const userTwo= new User("Nitya",10,false)
+console.log(userOne)//will print the object created with userOne
 console.log(userOne.constructor)
 // console.log(userTwo)
 

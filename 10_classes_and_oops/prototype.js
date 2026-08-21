@@ -11,7 +11,7 @@ let heroPower={
   thor: "hammer",
   spiderman: "sling",
 
-  getSpiderPower: function(){
+   getSpidyPower: function(){
     console.log(`spidy power is ${this.spiderman}`);
     
   }
@@ -52,6 +52,8 @@ const TASupport={
 }
 
 Teacher.__proto__=user
+console.log(Teacher.name);//now teacher have the access to the user object 
+
 
 
 
@@ -64,6 +66,6 @@ String.prototype.trueLength= function(){
   console.log(`True length is: ${this.trim().length}`)
 }
 
-anotherUsername.trueLength()
-"iceTea".trueLength()
+// anotherUsername.trueLength()
+// "iceTea".trueLength()
 
