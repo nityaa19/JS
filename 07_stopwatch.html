@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="time">00:00:00</div>
+  <button id="start">Start</button>
+  <button id="stop">Stop</button>
+  <button id="reset">Reset</button>
+</body>
+<script>
+  temp=0
+  const time=document.querySelector('#time')
+  const start=document.getElementById('start')
+  const stop=document.getElementById('stop')
+  const reset=document.getElementById('reset')
+
+
+  let ms=0
+  let second=0
+  let minute=0
+
+  let interval=null
+  start.addEventListener('click',function(){
+    if(!interval){
+      interval = setInterval(function(){
+      ms+=1
+      displaytime(ms)
+    },10)
+    }
+  })
+
+  stop.addEventListener('click',function(){
+    
+    clearInterval(interval)
+    interval=null
+    
+  })
+  
+  reset.addEventListener('click',function(){
+    clearInterval(interval)
+    ms=0
+    second=0
+    minute=0
+    interval=null
+    displaytime(ms)
+  })
+  
+  
+
+function displaytime(mss) {
+
+    if (mss === 99) {
+        second += 1;
+        ms = 0;
+        mss=0
+    }
+
+    if (second === 60) {
+        minute += 1;
+        second = 0;
+    }
+
+    let displayMss = mss;
+    let displaySecond = second;
+    let displayMinute = minute;
+
+    if (displayMss < 10) {
+        displayMss = "0" + displayMss;
+    }
+
+    if (displaySecond < 10) {
+        displaySecond = "0" + displaySecond;
+    }
+
+    if (displayMinute < 10) {
+        displayMinute = "0" + displayMinute;
+    }
+
+    time.innerHTML = `${displayMinute}:${displaySecond}:${displayMss}`;
+}
+</script>
+</html>
