@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<body>
+  <h2>
+    Press the button and see the magic
+  </h2>
+  <div id="color-code"></div>
+  <button id="start"> Start</button>
+  <button id="stop"> stop</button>
+</body>
+<script>
+  const body=document.querySelector('body')
+  const code=document.getElementById('color-code')
+  
+  function generateRandomColor(){
+    let color="#"
+    const hex='0123456789ABCDEF'
+    for(let i=0;i<6;i++){
+      color+=hex[Math.floor(Math.random()*16)]
+    }
+    return color
+  }
+
+
+    const start=document.querySelector('#start')
+    const stop=document.querySelector('#stop')
+    let inter=null
+    
+   
+   start.addEventListener('click',function(){ 
+    if(!inter){
+      inter=setInterval(function(){
+      let color=generateRandomColor()
+      body.style.backgroundColor=color
+      code.innerText=color
+    },1000) 
+    }
+  })
+
+    stop.addEventListener('click',function(){
+      clearInterval(inter)
+      inter=null
+    })
+
+    
+    
+  
+  
+</script>
+</html>
