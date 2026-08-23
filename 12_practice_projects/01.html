@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body style="background-color: #414141;color:white ;">
+  <h1>Counter</h1>
+  <div id="result" style="padding-left: 20px;">0</div>
+
+  <button id="increment">+</button>
+  <button id="inceseBy5">Incement by 5</button>
+  <button id="reset">Reset</button>
+  <button id="decrement">-</button>
+
+</body>
+<script>
+  let answer=0
+  
+  const result= document.querySelector('#result')
+  const buttons= document.querySelectorAll('button')
+
+  buttons.forEach(function (button){
+    console.log(button)
+    button.addEventListener('click',function(e){
+      if(e.target.id==="increment"){
+        answer+=1
+        printResult()
+      }
+      if(e.target.id==="inceseBy5"){
+        answer+=5
+        printResult()
+      }
+      if(e.target.id==="decrement"){
+        if(answer>0){
+          answer-=1
+          printResult()
+        }
+      }
+      if(e.target.id==="reset"){
+        answer=0
+        printResult()
+      }
+    })
+  })
+   function printResult(){
+    result.textContent=answer
+   }
+  
+  
+</script>
+
+</html>

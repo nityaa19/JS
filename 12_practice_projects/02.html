@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #calciBody{
+      background-color: #212121;
+      width: 120px;
+      height: 200px;
+      border-radius: 5px;
+    }
+    #display{
+      padding: 10px;
+      background-color: white;
+      width: 100px;
+      height: 20px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body style="background-color: #414141;">
+  <div id="calciBody">
+    <div id="display"></div>
+    <div id="buttons">
+      
+        <button class="number" >7</button>
+        <button class="number" >8</button>
+        <button class="number" >9</button>
+        <button class="operations">+</button>
+      
+        <button class="number" >4</button>
+        <button class="number" >5</button>
+        <button class="number" >6</button>
+        <button class="operations">-</button>
+      
+        <button class="number" >1</button>
+        <button class="number" >2</button>
+        <button class="number" >3</button>
+        <button class="operations">x</button>
+      
+        <button class="clear" >C</button>
+        <button class="number" >0</button>
+        <button class="assignment" >=</button>
+        <button class="operations">/</button>
+      
+    </div>
+  </div>
+</body>
+<script>
+  const display=document.querySelector('#display')
+
+  const buttons=document.querySelectorAll('#buttons button')
+  let calc=""
+
+  let a=null
+  let b=null
+  let op=null
+  let flag=true
+  buttons.forEach(button => {
+    button.addEventListener('click',function(e){
+      
+      
+      if(e.target.className==='number'){
+        if(!a){
+          a=e.target.innerText
+        }
+        else if(a && !op && flag){
+          a=a+e.target.innerText
+        }else if(b){
+          b+=e.target.innerText
+        }
+        else{
+          b=e.target.innerText
+        }
+        calc+=e.target.innerText
+        calc+=" "
+        displayOper()
+      }
+      else if(e.target.className==='operations'){
+        op=e.target.innerText
+        calc+=e.target.innerText
+        calc+=" "
+        displayOper()
+      }
+      else if(e.target.className==='assignment'){
+        
+        if(a && b){
+          let res=0
+          if(op==='+'){
+            res=parseInt(a)+parseInt(b)
+          }else if(op==='-'){
+            res=a-b
+          }else if(op==='x'){
+            res=a*b
+          }
+          else{
+            res=a/b
+          }
+          calc=""
+          calc+=res
+          displayOper()
+           a=res
+          console.log(a)
+          b=null
+          op=null
+          flag=false
+          }
+         
+        }
+      else{
+        calc=""
+        a=b=op=null
+        flag=true
+        displayOper()
+      }
+
+
+
+  
+
+    })
+  });
+
+
+  function displayOper(){
+    display.textContent = calc
+  }
+</script>
+</html>
