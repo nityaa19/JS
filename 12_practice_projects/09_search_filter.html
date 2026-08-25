@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search & filter App</title>
+</head>
+<body>
+  <h2>
+    Search Users
+  </h2>
+  <form action="">
+    <input placeholder="user-name"  id="userName">
+  </form>
+  <div id="user_list">
+
+  </div>
+</body>
+<script>
+  const form = document.querySelector('form')
+  const input = document.querySelector('#userName')
+  const userList = document.querySelector('#user_list')
+
+  const users = [
+    { name: "Nitya", role: "Developer" },
+    { name: "Rahul", role: "Designer" },
+    { name: "Aman", role: "Developer" },
+    { name: "Priya", role: "Manager" },
+    { name: "Rohan", role: "Tester" },
+    { name: "Sneha", role: "Analyst" },
+    { name: "Arjun", role: "Developer" },
+    { name: "Kavya", role: "Designer" },
+    { name: "Vikram", role: "Manager" },
+    { name: "Ananya", role: "Tester" }
+  ]
+
+
+  function displayUsers(userArray) {
+
+    userList.innerHTML = ""
+
+    if (userArray.length === 0) {
+      
+      userList.innerHTML = "<p>No users found</p>"
+      return
+    }
+
+    userArray.forEach(function(user) {
+      userList.innerHTML += `
+        <p>${user.name} ------- ${user.role}</p>
+      `
+    })
+  }
+
+
+  function findUsers(word) {
+
+    const filteredUsers = users.filter(function(user) {
+
+      return user.name
+        .toLowerCase()
+        .includes(word.toLowerCase()) || user.role.toLowerCase().includes(word.toLowerCase())
+
+    })
+    
+    displayUsers(filteredUsers)
+  }
+
+
+  // Display all users when page loads
+  displayUsers(users)
+
+
+  // Search whenever user types
+  input.addEventListener('input', function() {
+
+    findUsers(input.value)
+
+  })
+</script>
+</html>
