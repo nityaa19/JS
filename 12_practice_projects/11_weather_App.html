@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+</head>
+<body style="background-color: #414141; color: white;">
+  <h2>Weather App</h2>
+  <form action="\submit">
+    <input type="text" placeholder="Enter City" id="ip">
+    <button id="submit-btn" style="background-color: greenyellow;">Submit</button>
+  </form>
+</body>
+<script>
+  const input=document.getElementById('ip')
+  const submit=document.getElementById('submit-btn')
+  const form =document.querySelector('form')
+
+  const geoUrlPre="https://geocoding-api.open-meteo.com/v1/search?name="
+  const geoUrlPost="&count=1"
+
+  let url 
+  form.addEventListener('submit',function(e){
+    e.preventDefault()
+    url=geoUrlPre+input.value+geoUrlPost
+    
+    getGeoData(input.value)
+    
+    console.log('check1')
+  })
+  
+  async function getGeoData(city) {
+      try{
+        const response= await fetch(url);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data =await response.json(); // Parse JSON response
+    
+      console.log("Post data:", data);
+      const latitude = data.results[0].latitude;
+      const longitude = data.results[0].longitude;
+      getWeatherData(latitude,longitude,city)
+    }
+      catch(error){
+        console.error(error)
+      };
+    }
+
+    async function getWeatherData(latitude,longitude,city) {
+      try{
+        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m`;
+        
+        const response= await fetch(weatherUrl);
+
+        if(!response.ok){
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data= await response.json();
+        console.log(data)
+        console.log(city);
+        
+        const card=document.createElement('div');
+        card.style.width="100px"
+        card.style.height="100px"
+        card.style.backgroundColor="#fff"
+        card.style.color="#414141"
+        
+
+        card.innerHTML=`
+        <p> City: ${city}</p>
+        <p>Tempratue: ${data.current.temperature_2m}</p>
+        `
+
+        document.body.appendChild(card);
+
+      }
+      catch(error){
+        console.error(error)
+      };
+    }
+
+  
+</script>
+</html>
