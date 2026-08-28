@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git hub user Finder</title>
+</head>
+<body>
+  <h2>
+    GitHub User Finder
+  </h2>
+  <form id="form">
+    <input placeholder="userId" id="user-id">
+    <button id="submit">Submit</button>
+  </form>
+</body>
+<script>
+  const form=document.querySelector('form')
+  const userId=document.querySelector('#user-id')
+  const submitB=document.querySelector('#submit')
+  let gitUser="https://api.github.com/users/"
+  
+
+  
+  form.addEventListener('submit',function(e){
+    e.preventDefault()
+    let git_User=gitUser+userId.value
+    userId.value=""
+    const req=new XMLHttpRequest()
+    req.open("GET",git_User)
+    req.onreadystatechange = function(){
+      
+      if(req.readyState===4){
+        if(req.status===404){
+        document.querySelector('body').innerHTML=`User Not found (404)`
+        }
+      else if(req.status===200){let data=JSON.parse(req.responseText)
+        const card=document.createElement("div")
+        card.style.width = "500px";
+        card.style.padding = "20px";
+        card.style.marginTop = "30px";
+        card.style.backgroundColor = "white";
+        card.style.borderRadius = "10px";
+        card.style.textAlign = "center";
+
+        console.log(data)
+
+        card.innerHTML=`
+        <img src="${data.avatar_url}">
+        <p>${data.name}</p>
+        <p>Followers: ${data.followers}</p>
+        <p>Following: ${data.following}</p>
+        <p>Repo Count: ${data.public_repos}</p>
+        `
+
+        document.body.appendChild(card)}
+      }
+    }
+    req.send()
+  })
+
+</script>
+</html>
